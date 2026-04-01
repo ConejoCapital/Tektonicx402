@@ -1,0 +1,12 @@
+# Credentials
+*-key.json
+*.pem
+.env
+.env.*
+
+# Build artifacts
+scripts/node_modules/
+scripts/base_extract*.ndjson
+
+# OS
+.DS_Store

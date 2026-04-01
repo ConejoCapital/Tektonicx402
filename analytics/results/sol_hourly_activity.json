@@ -1,0 +1,21 @@
+[[
+  {
+    "hour_bucket": "2025-12-16 12:00:00", 
+    "transaction_count": "1", 
+    "unique_buyers": "1", 
+    "volume_usdc": "9.9"
+  }, 
+  {
+    "hour_bucket": "2025-12-16 22:00:00", 
+    "transaction_count": "10", 
+    "unique_buyers": "2", 
+    "volume_usdc": "9.909"
+  }, 
+  {
+    "hour_bucket": "2025-12-16 23:00:00", 
+    "transaction_count": "10", 
+    "unique_buyers": "1", 
+    "volume_usdc": "0.01"
+  }
+]
+]

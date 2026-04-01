@@ -1,0 +1,30 @@
+[[
+  {
+    "facilitator": "L54zkaPQFeTn1UsEqieEXBqWrPShiaZEPD7mS5WXfQg", 
+    "first_seen": "2025-12-16 12:32:50", 
+    "last_seen": "2025-12-16 12:32:50", 
+    "seller_ata": "3jYMFx2YqUS3wyFcRnDFnVyjxsnhyESAK6CAdXNJGttY", 
+    "total_volume_usdc": "9.9", 
+    "transaction_count": "1", 
+    "unique_buyers": "1"
+  }, 
+  {
+    "facilitator": "L54zkaPQFeTn1UsEqieEXBqWrPShiaZEPD7mS5WXfQg", 
+    "first_seen": "2025-12-16 22:26:10", 
+    "last_seen": "2025-12-16 22:26:10", 
+    "seller_ata": "2px7Jg77UxQRQtHT54G1NRQcE3KughnrsJxceiMR8PKd", 
+    "total_volume_usdc": "9.9", 
+    "transaction_count": "1", 
+    "unique_buyers": "1"
+  }, 
+  {
+    "facilitator": "L54zkaPQFeTn1UsEqieEXBqWrPShiaZEPD7mS5WXfQg", 
+    "first_seen": "2025-12-16 22:28:16", 
+    "last_seen": "2025-12-16 23:17:07", 
+    "seller_ata": "EgbXPoDQn9FYLKLAMciAFcqaDi6fSxuje8xjpdpzoYei", 
+    "total_volume_usdc": "0.019", 
+    "transaction_count": "19", 
+    "unique_buyers": "1"
+  }
+]
+]

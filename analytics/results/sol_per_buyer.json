@@ -1,0 +1,27 @@
+[[
+  {
+    "buyer_ata": "qhgsei5aeHgBmUs9monZTsBwTka5cGcfcSFwTbqb8fH", 
+    "first_payment": "2025-12-16 12:32:50", 
+    "last_payment": "2025-12-16 12:32:50", 
+    "total_spent_usdc": "9.9", 
+    "transaction_count": "1", 
+    "unique_sellers_paid": "1"
+  }, 
+  {
+    "buyer_ata": "94U1Mm47w37c3YXmxxYsZxvBUk5HPCWK7YXuAwXak25X", 
+    "first_payment": "2025-12-16 22:26:10", 
+    "last_payment": "2025-12-16 22:26:10", 
+    "total_spent_usdc": "9.9", 
+    "transaction_count": "1", 
+    "unique_sellers_paid": "1"
+  }, 
+  {
+    "buyer_ata": "HNi2HcP9YAwiHwzbAWVykWoRqNUstsU6nDEoGtPV7iGr", 
+    "first_payment": "2025-12-16 22:28:16", 
+    "last_payment": "2025-12-16 23:17:07", 
+    "total_spent_usdc": "0.019", 
+    "transaction_count": "19", 
+    "unique_sellers_paid": "1"
+  }
+]
+]
