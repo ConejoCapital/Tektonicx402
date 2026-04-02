@@ -1,20 +1,21 @@
 # Tektonicx402
 
-**A free, high-fidelity x402 transactional archive brought to you by Tektonic, with support from Google Cloud Web3 and the Solana Foundation.**
+**A free, high-fidelity x402 transactional archive brought to you by Tektonic, with support from Google Cloud Web3 and Solana Foundation.**
 
 ---
 
 ## Overview
 
-The Tektonic x402 dataset provides a comprehensive, open-access ledger of decentralized API monetization and AI-agent payment settlements executed under the [x402 protocol](https://www.x402.org/). It indexes every on-chain USDC micro-settlement across the **Base** and **Solana** blockchain networks, producing the most complete historical record of machine-to-machine commerce currently available as a public good.
+The Tektonic x402 dataset provides a comprehensive, open-access ledger of decentralized API monetization and AI-agent payment settlements executed under the [x402 protocol](https://www.x402.org/). It indexes every onchain USDC micro-settlement across the **Base** and **Solana** blockchain networks, producing a complete historical record of machine-to-machine commerce currently available as a public good.
 
-By replacing rate-limited, legacy HTTP RPC-polling methodologies with a BigQuery-native extraction engine operating directly on Google Cloud's public blockchain datasets, this pipeline achieves 100% historical accuracy and throughput capture — logging tens of thousands of daily micro-settlements that traditional indexers physically cannot access due to API throttling and pagination constraints.
+By replacing rate-limited, legacy HTTP RPC-polling methodologies with a BigQuery-native extraction engine operating directly on Google Cloud's public blockchain datasets, this pipeline achieves 100% historical accuracy and throughput capture, logging tens of thousands of daily micro-settlements that traditional indexers physically cannot access due to API throttling and pagination constraints.
 
 **Who this is for:**
 - **Researchers** studying decentralized API monetization, agentic commerce, or on-chain micro-payment dynamics
 - **Data analysts** building dashboards, volume trackers, or facilitator leaderboards for the x402 ecosystem
 - **AI developers** training models on real-world agent transaction patterns or integrating x402 settlement data into agentic workflows
 - **Protocol teams** auditing facilitator behavior, measuring adoption, or benchmarking settlement accuracy
+- - **Insitutional Fintechs** track adoption of agentic commerce and evaluate market opportunity.
 
 ---
 
@@ -30,7 +31,7 @@ x402 is an open payment protocol that reuses the dormant HTTP `402 Payment Requi
 
 The entire flow settles in a single block confirmation. No accounts, subscriptions, or API keys are required by the end-user.
 
-### On-Chain Fingerprint
+### OnChain Fingerprint
 
 The x402 protocol leaves a deterministic on-chain fingerprint that this pipeline detects:
 
