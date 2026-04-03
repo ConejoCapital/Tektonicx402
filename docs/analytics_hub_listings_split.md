@@ -35,6 +35,7 @@ SELECT
   MIN(block_timestamp) AS first_payment_seen
 FROM `web3-publicgoods.tektonic_x402.sol_raw`
 WHERE tx_status = 'SUCCESS'
+  AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 GROUP BY agent_pubkey
 ORDER BY total_handled_calls DESC
 LIMIT 10;
@@ -51,6 +52,7 @@ SELECT
 FROM `web3-publicgoods.tektonic_x402.sol_raw`
 WHERE tx_status = 'SUCCESS' 
   AND transaction_from = 'ENTER_WALLET_PUBKEY_HERE'
+  AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 90 DAY)
 GROUP BY transaction_from;
 ```
 
@@ -79,6 +81,7 @@ SELECT
   COUNT(DISTINCT CASE WHEN tx_status = 'FAILED' THEN tx_signature END) AS failed_attempts,
   ROUND((COUNT(DISTINCT CASE WHEN tx_status = 'FAILED' THEN tx_signature END) * 100.0) / COUNT(DISTINCT tx_signature), 2) AS failure_rate_percentage
 FROM `web3-publicgoods.tektonic_x402.sol_raw`
+WHERE block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 GROUP BY diagnostic_date
 ORDER BY diagnostic_date DESC;
 ```
@@ -102,6 +105,7 @@ SELECT
   COUNT(DISTINCT sender) AS unique_platform_users
 FROM `web3-publicgoods.tektonic_x402.base_raw`
 WHERE tx_status = 1
+  AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 GROUP BY facilitator_name
 ORDER BY total_usdc_volume DESC;
 ```
@@ -115,6 +119,7 @@ SELECT
   COUNT(tx_hash) AS total_api_calls
 FROM `web3-publicgoods.tektonic_x402.base_raw`
 WHERE tx_status = 1
+  AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 GROUP BY processing_date
 ORDER BY processing_date DESC;
 ```

@@ -42,6 +42,7 @@ SELECT
   MIN(block_timestamp) AS first_payment_seen
 FROM `web3-publicgoods.tektonic_x402.sol_raw`
 WHERE tx_status = 'SUCCESS'
+  AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 GROUP BY agent_pubkey
 ORDER BY total_handled_calls DESC
 LIMIT 10;
@@ -58,6 +59,7 @@ SELECT
 FROM `web3-publicgoods.tektonic_x402.sol_raw`
 WHERE tx_status = 'SUCCESS' 
   AND transaction_from = 'ENTER_WALLET_PUBKEY_HERE'
+  AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 90 DAY)
 GROUP BY transaction_from;
 ```
 
@@ -86,6 +88,7 @@ SELECT
   COUNT(DISTINCT CASE WHEN tx_status = 'FAILED' THEN tx_signature END) AS failed_attempts,
   ROUND((COUNT(DISTINCT CASE WHEN tx_status = 'FAILED' THEN tx_signature END) * 100.0) / COUNT(DISTINCT tx_signature), 2) AS failure_rate_percentage
 FROM `web3-publicgoods.tektonic_x402.sol_raw`
+WHERE block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 GROUP BY diagnostic_date
 ORDER BY diagnostic_date DESC;
 ```
@@ -97,10 +100,12 @@ WITH global_x402 AS (
   SELECT DATE(block_timestamp) AS processing_date, amount_usdc, chain, tx_signature AS tx_id
   FROM `web3-publicgoods.tektonic_x402.sol_raw`
   WHERE tx_status = 'SUCCESS'
+    AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
   UNION ALL
   SELECT DATE(block_timestamp) AS processing_date, amount_usdc, chain, tx_hash AS tx_id
   FROM `web3-publicgoods.tektonic_x402.base_raw`
   WHERE tx_status = 1
+    AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 )
 SELECT 
   processing_date,
@@ -126,10 +131,12 @@ FROM (
   SELECT tx_signature AS tx_id, amount_usdc, transaction_from AS consumer, chain
   FROM `web3-publicgoods.tektonic_x402.sol_raw`
   WHERE tx_status = 'SUCCESS'
+    AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
   UNION ALL
   SELECT tx_hash AS tx_id, amount_usdc, sender AS consumer, chain
   FROM `web3-publicgoods.tektonic_x402.base_raw`
   WHERE tx_status = 1
+    AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 )
 GROUP BY chain
 ORDER BY total_market_volume DESC;
@@ -145,10 +152,12 @@ FROM (
   SELECT DATE(block_timestamp) AS processing_date, transaction_from AS consumer
   FROM `web3-publicgoods.tektonic_x402.sol_raw`
   WHERE tx_status = 'SUCCESS'
+    AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
   UNION ALL
   SELECT DATE(block_timestamp) AS processing_date, sender AS consumer
   FROM `web3-publicgoods.tektonic_x402.base_raw`
   WHERE tx_status = 1
+    AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 )
 WHERE processing_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY)
 GROUP BY processing_date

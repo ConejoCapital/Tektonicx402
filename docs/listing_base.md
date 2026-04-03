@@ -28,6 +28,7 @@ SELECT
   COUNT(DISTINCT sender) AS unique_platform_users
 FROM `web3-publicgoods.tektonic_x402.base_raw`
 WHERE tx_status = 1
+  AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 GROUP BY facilitator_name
 ORDER BY total_usdc_volume DESC;
 ```
@@ -41,6 +42,7 @@ SELECT
   COUNT(tx_hash) AS total_api_calls
 FROM `web3-publicgoods.tektonic_x402.base_raw`
 WHERE tx_status = 1
+  AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 GROUP BY processing_date
 ORDER BY processing_date DESC;
 ```
@@ -54,6 +56,7 @@ SELECT
   COUNT(tx_hash) AS transaction_count
 FROM `web3-publicgoods.tektonic_x402.base_raw`
 WHERE tx_status = 1
+  AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 GROUP BY protocol
 ORDER BY unique_consumers DESC;
 ```
@@ -67,6 +70,7 @@ SELECT
   COUNT(DISTINCT facilitator_name) AS unique_protocols_used
 FROM `web3-publicgoods.tektonic_x402.base_raw`
 WHERE tx_status = 1
+  AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 GROUP BY api_consumer
 ORDER BY total_usdc_invested DESC
 LIMIT 5;
@@ -93,10 +97,12 @@ WITH global_x402 AS (
   SELECT DATE(block_timestamp) AS processing_date, amount_usdc, chain, tx_signature AS tx_id
   FROM `web3-publicgoods.tektonic_x402.sol_raw`
   WHERE tx_status = 'SUCCESS'
+    AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
   UNION ALL
   SELECT DATE(block_timestamp) AS processing_date, amount_usdc, chain, tx_hash AS tx_id
   FROM `web3-publicgoods.tektonic_x402.base_raw`
   WHERE tx_status = 1
+    AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 )
 SELECT 
   processing_date,
@@ -122,10 +128,12 @@ FROM (
   SELECT tx_signature AS tx_id, amount_usdc, transaction_from AS consumer, chain
   FROM `web3-publicgoods.tektonic_x402.sol_raw`
   WHERE tx_status = 'SUCCESS'
+    AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
   UNION ALL
   SELECT tx_hash AS tx_id, amount_usdc, sender AS consumer, chain
   FROM `web3-publicgoods.tektonic_x402.base_raw`
   WHERE tx_status = 1
+    AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 )
 GROUP BY chain
 ORDER BY total_market_volume DESC;
@@ -141,10 +149,12 @@ FROM (
   SELECT DATE(block_timestamp) AS processing_date, transaction_from AS consumer
   FROM `web3-publicgoods.tektonic_x402.sol_raw`
   WHERE tx_status = 'SUCCESS'
+    AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
   UNION ALL
   SELECT DATE(block_timestamp) AS processing_date, sender AS consumer
   FROM `web3-publicgoods.tektonic_x402.base_raw`
   WHERE tx_status = 1
+    AND block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
 )
 WHERE processing_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY)
 GROUP BY processing_date
