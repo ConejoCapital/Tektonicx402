@@ -1,4 +1,4 @@
-# Tektonic x402 Public Dataset (Solana & Base)
+# Tektonic x402 Public Dataset - Solana & Base
 
 **A free, high-fidelity x402 transactional archive brought to you by Tektonic, with support from Google Cloud Web3 & Solana Foundation.**
 
@@ -7,7 +7,7 @@ The Tektonic x402 dataset provides a comprehensive ledger of decentralized API m
 
 By replacing rate-limited, legacy HTTP RPC-polling methodologies with a pristine, massively parallel BigQuery-native extraction engine, this dataset achieves 100% historical accuracy and throughput capture across multiple blockchain environments (SVM and EVM). It successfully logs tens of thousands of daily micro-settlements (spanning structurally hidden network testing phases all the way to global adoption) that traditional indexers physically cannot access.
 
-**Tektonic** is co-founded by Mauricio Jean Pieer Trujillo Ramirez aka Bunny - [https://x.com/ConejoCapital](https://x.com/ConejoCapital) and Tomas Del Manzo Oliver aka Tomi - [https://x.com/Tomi204_](https://x.com/Tomi204_). You can find out more about Tektonic at https://tektonic.company/
+**Tektonic** is co-founded by [@ConejoCapital](https://x.com/ConejoCapital) and [@Tomi204_](https://x.com/Tomi204_). You can find out more about Tektonic at [tektonic.company](https://tektonic.company/).
 
 ## Methodology & Architecture
 Our data pipeline operates directly on canonical execution traces provided continuously by Google Cloud Web3's public blockchain datasets, ensuring zero manipulation or third-party dependencies:
